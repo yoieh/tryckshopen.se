@@ -1,37 +1,25 @@
+
 $(document).ready(function(){
+  $(document).ready(function(){
+      $('ul.tabs').tabs();
+    });
+
   $('.carousel').carousel({
       'time_constant': 5000,
-      'shift': 20,
+      'shift': 1,
       'padding': 200,
       'dist': -100,
-      'no_wrap': true
+      'no_wrap': false
   });
   function autoplay() {
       $('.carousel').carousel('next');
       setTimeout(autoplay, 1000);
   }
-
-  autoplay()
-
+  autoplay();
 });
-
-/*
-// Next slide
-$('.carousel').carousel('next');
-$('.carousel').carousel('next', 3); // Move next n times.
-// Previous slide
-$('.carousel').carousel('prev');
-$('.carousel').carousel('prev', 4); // Move prev n times.
-// Set to nth slide
-$('.carousel').carousel('set', 4);
-*/
-
-  ///setTimeout(, 50);
-
 
 $(window).scroll(function(){
   var wScroll = $(this).scrollTop();
-
 
   $('.parallax_btn').css({
     'transition': '.5s ease-out',
@@ -45,8 +33,7 @@ $(window).scroll(function(){
 
   $('.parallax_row-1').css({
     'transition': '.5s ease-out',
-    'transform' : 'translate(0px, +'+ wScroll / 4 +'%)',
-    //'opacity': wScroll / 50
+    'transform' : 'translate(0px, -'+ wScroll / 4 +'%)',
   });
 
   $('.parallax_row-2').css({
@@ -58,13 +45,18 @@ $(window).scroll(function(){
     'transform' : 'translate(0px, -'+ wScroll / 5 +'%)',
   });
 
-
-
-  if (!wScroll > $('.first-card').offset().left - ($(window).width() / 2)){
+  /*if (!wScroll > $('.first-card').offset().left - ($(window).width() / 2)){
     $('.first-card').css({
       'transition': '.5s ease-out',
       'opacity': wScroll / 400,
       'transform' : 'translate( +'+ wScroll / 5 +'%, 0px)',
     });
-  }
+  } else {
+    $('.first-card').css({
+      'left': $(window).width() / 2,
+    });
+    console.log($(window).width() / 2);
+    console.log($('.first-card').offset().left);
+    //$('.first-card').offset().left == $(window).width() / 2;
+  }*/
 });
