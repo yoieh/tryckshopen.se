@@ -1,22 +1,29 @@
-jQuery.fn.center = function(parent, durationLength) {
-    if (parent) {
-        parent = this.parent();
-    } else {
-        parent = window;
-    }
-    this.animate({
-        top: ((($(parent).height() - this.outerHeight()) / 2) + $(parent).scrollTop() + "px"),
-        left: ((($(parent).width() - this.outerWidth()) / 2) + $(parent).scrollLeft() + "px")
-    }, {duration: durationLength, queue: false});
-return this;
-}
 
-function autoplay() {
-    $('.carousel').carousel('next');
-    setTimeout(autoplay, 1000);
-}
+
 
 $(document).ready(function(){
+  function autoplay() {
+      $('.carousel').carousel('next');
+      setTimeout(autoplay, 1000);
+  }
+
+  ;
+
+  var options = [
+    {selector: '.cat-1', offset: -1000,
+     callback: function(){
+        Materialize.fadeInImage('.triangle-isosceles')
+      }
+    },
+
+    {selector: '.cat-1', offset: -1000,
+    callback: function(el){
+      Materialize.showStaggeredList('.cat-2');
+    }}
+  ];
+
+  Materialize.scrollFire(options);
+
   $('ul.tabs').tabs();
 
   $('.carousel').carousel({
@@ -27,7 +34,6 @@ $(document).ready(function(){
       'no_wrap': false,
       'height' : 300
   });
-
 
   autoplay();
 });
