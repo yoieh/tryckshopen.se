@@ -11,3 +11,10 @@ jobs:
       if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]'
       with:
         github-token: "${{ secrets.GITHUB_TOKEN }}"
+    - name: Merge me!
+      uses: ridedott/merge-me-action@v1.1.36
+      with:
+        # A GitHub token.
+        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        # The GitHub login for which automatic merges are enabled.
+#         GITHUB_LOGIN: # optional, default is dependabot-preview[bot]:  
