@@ -29,4 +29,4 @@ jobs:
         # The PR label name you want to use when merge PR automatically.
         label-name: dependencies # default is automerge
         # GitHub WebHook Secret Token
-        # github-token: 
+        github-token: ${{ secrets.GITHUB_TOKEN }}
